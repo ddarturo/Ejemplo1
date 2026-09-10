@@ -25,6 +25,7 @@
   "homepage": "https://github.com/ddarturo/Ejemplo1#readme",
   "devDependencies": {
     "@axe-core/cli": "^4.13.0",
+    "browser-driver-manager": "^2.0.1",
     "htmlhint": "^1.9.2",
     "http-server": "^14.1.1"
   }
