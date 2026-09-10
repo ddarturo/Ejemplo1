@@ -45,11 +45,13 @@ jobs:
       - name: Start local web server
         run: npm run serve -- --silent &
 
-      - name: Install matching Chrome + ChromeDriver
+      - name: Install compatible Chrome + ChromeDriver
         run: |
-          npx browser-driver-manager install chrome
-          echo "CHROME_PATH=$(npx browser-driver-manager which 2>/dev/null | awk -F': ' '/Browser:/ {print $2}')" >> "$GITHUB_ENV"
-          echo "CHROMEDRIVER_PATH=$(npx browser-driver-manager which 2>/dev/null | awk -F': ' '/Driver:/ {print $2}')" >> "$GITHUB_ENV"
+          npx --yes browser-driver-manager install chrome@152
+          CHROME_PATH=$(npx --yes browser-driver-manager which 2>/dev/null | awk -F': ' '/Browser:/ {print $2}')
+          CHROMEDRIVER_PATH=$(npx --yes browser-driver-manager which 2>/dev/null | awk -F': ' '/Driver:/ {print $2}')
+          echo "CHROME_PATH=$CHROME_PATH" >> "$GITHUB_ENV"
+          echo "CHROMEDRIVER_PATH=$CHROMEDRIVER_PATH" >> "$GITHUB_ENV"
 
       - name: Accessibility check (WCAG 2A)
         run: npx @axe-core/cli http://127.0.0.1:8080 --exit --tags wcag2a --chrome-path "$CHROME_PATH" --chromedriver-path "$CHROMEDRIVER_PATH"
