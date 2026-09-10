@@ -8,6 +8,7 @@
     "validate:html": "node scripts/check-html5.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:responsive": "node scripts/check-responsive.mjs",
+    "check:a11y": "node scripts/check-a11y.mjs",
     "serve": "http-server . -p 8080",
     "test": "npm run lint:html && npm run validate:html && npm run check:links && npm run check:responsive"
   },
@@ -24,8 +25,9 @@
   },
   "homepage": "https://github.com/ddarturo/Ejemplo1#readme",
   "devDependencies": {
-    "@axe-core/cli": "^4.13.0",
+    "@axe-core/playwright": "^4.10.1",
     "htmlhint": "^1.9.2",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "playwright": "^1.55.0"
   }
 }
